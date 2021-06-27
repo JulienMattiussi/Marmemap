@@ -1074,7 +1074,7 @@
          "margin":0,
          "name":"greyWalls",
          "spacing":0,
-         "tilecount":10,
+         "tilecount":9,
          "tileheight":32,
          "tiles":[
                 {
@@ -1169,7 +1169,7 @@
          "margin":0,
          "name":"babyfoot",
          "spacing":0,
-         "tilecount":7,
+         "tilecount":6,
          "tileheight":32,
          "tiles":[
                 {
