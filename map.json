@@ -1017,8 +1017,17 @@
          "tilewidth":32
         }, 
         {
+         "columns":8,
          "firstgid":321,
-         "source":"parquet.json"
+         "image":"parquet.png",
+         "imageheight":256,
+         "imagewidth":256,
+         "margin":0,
+         "name":"parquet",
+         "spacing":0,
+         "tilecount":65,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":32,
  "type":"map",
