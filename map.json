@@ -41,6 +41,11 @@
                          "name":"openWebsite",
                          "type":"string",
                          "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/ShiningThierry.jpg"
+                        }, 
+                        {
+                         "name":"playAudio",
+                         "type":"string",
+                         "value":"Loyalty_Freak_Music_-_07_-_A_really_dark_alley.mp3"
                         }],
                  "type":"tilelayer",
                  "visible":true,
@@ -311,7 +316,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":33,
+ "nextlayerid":34,
  "nextobjectid":1,
  "orientation":"orthogonal",
  "properties":[
@@ -321,7 +326,7 @@
          "value":"script.js"
         }],
  "renderorder":"right-down",
- "tiledversion":"1.6.0",
+ "tiledversion":"1.7.0",
  "tileheight":32,
  "tilesets":[
         {
