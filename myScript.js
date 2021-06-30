@@ -1,6 +1,6 @@
 var toiletsSound = WA.loadSound("flush.mp3");
 var config = {
-    volume : 0.3,
+    volume : 0.1,
     loop : false,
     rate : 1,
     detune : 1,
