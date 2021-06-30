@@ -387,7 +387,7 @@
         {
          "name":"script",
          "type":"string",
-         "value":"script.js"
+         "value":"myScript.js"
         }],
  "renderorder":"right-down",
  "tiledversion":"1.7.0",
