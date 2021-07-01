@@ -1,10 +1,10 @@
 
 
-const getValue = () => window.localStorage.getItem('monChat');
+const getValue = () => localStorage.getItem('monChat');
 
 const incrementValue = () => {
     const value = parseInt(getValue()) || 0;
-    window.localStorage.setItem('monChat', value + 1);
+    localStorage.setItem('monChat', value + 1);
 }
 
 var toiletsSound = WA.loadSound("flush.mp3");
