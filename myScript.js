@@ -1,6 +1,6 @@
 
 
-const test = 0;
+let test = 0;
 
 var toiletsSound = WA.loadSound("flush.mp3");
 var config = {
