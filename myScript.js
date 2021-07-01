@@ -1,11 +1,6 @@
 
 
-const getValue = () => localStorage.getItem('monChat');
-
-const incrementValue = () => {
-    const value = parseInt(getValue()) || 0;
-    localStorage.setItem('monChat', value + 1);
-}
+const test = 0;
 
 var toiletsSound = WA.loadSound("flush.mp3");
 var config = {
@@ -19,7 +14,8 @@ var config = {
 }
 
 WA.onLeaveZone('toilets', () => {
-    incrementValue();
+    test++;
     toiletsSound.play(config);
-    WA.sendChatMessage(getValue(), 'Mr Robot');
+    console.log(Object.keys(WA));
+    console.log(test);
 });
