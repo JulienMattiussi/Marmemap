@@ -1,4 +1,4 @@
-const version = "0.5.6"
+const version = "0.5.7"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -58,23 +58,24 @@ const config = {
     mute : false
 }
 
-WA.onLeaveZone('toilets', () => {
+WA.onLeaveZone('toiletsZone', () => {
     console.log(successBoard);
     toiletsSound.play(config);
 });
 
 //WC PICTURE
-WA.onEnterZone('wcPicture', () => {
+WA.onEnterZone('wcPictureZone', () => {
     validateSuccess('wcPicture');
 });
 
 //SUCCESS BOARD
-WA.onEnterZone('successBoard', () => {
+WA.onEnterZone('successBoardZone', () => {
+    console.log(successBoard);
     const successCount = getSuccessCount();
     const validSuccessCount = getValidSuccessCount(); 
     //WA.displayBubble();
     sucessPopup = WA.openPopup(
-        "successBoard", 
+        "successBoardPopup", 
         `SUCCESS BOARD
         Tu a découvert 
         ${validSuccessCount} succes
@@ -86,7 +87,7 @@ WA.onEnterZone('successBoard', () => {
             callback: (popup) => {
                 popup.close();
                 sucessPopup = WA.openPopup(
-                    "successBoard", 
+                    "successBoardPopup", 
                     `SUCCESS BOARD
                     ${getSuccessList()}
                     ${getToDoList()}
@@ -104,7 +105,7 @@ WA.onEnterZone('successBoard', () => {
     );
 });
 
-WA.onLeaveZone('successBoard', () => {
+WA.onLeaveZone('successBoardZone', () => {
     //WA.removeBubble();
     sucessPopup.close();
 });
