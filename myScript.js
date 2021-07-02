@@ -1,4 +1,4 @@
-const version = "0.5.1"
+const version = "0.5.2"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -77,7 +77,7 @@ WA.onEnterZone('successBoard', () => {
     const validSuccessCount = getValidSuccessCount(); 
     //WA.displayBubble();
     sucessPopup = WA.openPopup(
-        "successPopup", 
+        "successPop", 
         `SUCCESS BOARD
         Tu a découvert 
         ${validSuccessCount} succes
@@ -89,7 +89,7 @@ WA.onEnterZone('successBoard', () => {
             callback: (popup) => {
                 popup.close();
                 sucessPopup = WA.openPopup(
-                    "successPopup", 
+                    "successPop", 
                     `SUCCESS BOARD
                     ${getSuccessList()}
                     ${getToDoList()}
