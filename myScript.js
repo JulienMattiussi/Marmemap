@@ -1,4 +1,4 @@
-const version = "0.5.7"
+const version = "0.5.8"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -12,10 +12,7 @@ let sucessPopup;
 
 
 const validateSuccess = (name) => {
-    console.log('something', name);
     successBoard[name].valid = true;
-    console.log(successBoard[name]);
-    console.log(successBoard);
 }
 
 const getSuccessCount = () => Object.keys(successBoard).length;
@@ -59,7 +56,6 @@ const config = {
 }
 
 WA.onLeaveZone('toiletsZone', () => {
-    console.log(successBoard);
     toiletsSound.play(config);
 });
 
@@ -73,14 +69,14 @@ WA.onEnterZone('successBoardZone', () => {
     console.log(successBoard);
     const successCount = getSuccessCount();
     const validSuccessCount = getValidSuccessCount(); 
+    console.log(validSuccessCount);
     //WA.displayBubble();
     sucessPopup = WA.openPopup(
         "successBoardPopup", 
         `SUCCESS BOARD
         Tu a découvert 
         ${validSuccessCount} succes
-        sur ${successCount}
-        `, 
+        sur ${successCount}`, 
         [{
             label: "Next",
             className: "primary",
@@ -107,5 +103,6 @@ WA.onEnterZone('successBoardZone', () => {
 
 WA.onLeaveZone('successBoardZone', () => {
     //WA.removeBubble();
+    console.log(sucessPopup);
     sucessPopup.close();
 });
