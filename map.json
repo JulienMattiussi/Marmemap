@@ -383,7 +383,18 @@
          "draworder":"topdown",
          "id":15,
          "name":"floorLayer",
-         "objects":[],
+         "objects":[
+                {
+                 "height":258.666666666667,
+                 "id":2,
+                 "name":"successPopup",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":186.666666666667,
+                 "x":448,
+                 "y":88
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -439,7 +450,7 @@
          "y":0
         }],
  "nextlayerid":43,
- "nextobjectid":2,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "properties":[
         {
