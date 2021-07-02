@@ -1,4 +1,4 @@
-const version = "0.5.12"
+const version = "0.5.13"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -27,7 +27,7 @@ const getSuccessList = () => {
         .filter(value => value.valid)
         .map(sucess => sucess.description)
         .reduce((list, desc) => {
-            return `${list}<br/>
+            return `${list}\n
             ${desc}`;
         }, '');
     return okList;
@@ -38,7 +38,7 @@ const getToDoList = () => {
         .keys(successBoard)
         .filter(key => !successBoard[key].valid)
         .reduce((list, name) => {
-            return `${list}<br/>
+            return `${list}\n
             ${name} ???`;
         }, '');
     return todoList;
@@ -81,7 +81,7 @@ WA.onEnterZone('axeZone', () => {
 });
 
 //WC PHILLIPE ZONE
-const phillipeSound = WA.loadSound("assets\/phillipe.mp3");
+const phillipeSound = WA.loadSound("assets\/philippe.mp3");
 const phillipeSoundConfig = {
     volume : 0.3,
     loop : false,
@@ -103,9 +103,9 @@ WA.onEnterZone('successBoardZone', () => {
     //WA.displayBubble();
     sucessPopup = WA.openPopup(
         "successBoardPopup", 
-        `SUCCESS BOARD<br/>
-        Tu a découvert <br/>
-        ${validSuccessCount} succes<br/>
+        `SUCCESS BOARD\n
+        Tu a découvert \n
+        ${validSuccessCount} succes\n
         sur ${successCount}`, 
         [{
             label: "Next",
@@ -114,9 +114,9 @@ WA.onEnterZone('successBoardZone', () => {
                 popup.close();
                 sucessPopup = WA.openPopup(
                     "successBoardPopup", 
-                    `SUCCESS BOARD<br/>
-                    ${getSuccessList()}<br/>
-                    ${getToDoList()}<br/>
+                    `SUCCESS BOARD\n
+                    ${getSuccessList()}\n
+                    ${getToDoList()}\n
                     `, 
                     [{
                         label: "Close",
