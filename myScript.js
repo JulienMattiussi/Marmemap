@@ -1,4 +1,4 @@
-const version = "0.5.3"
+const version = "0.5.4"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -43,13 +43,6 @@ const getToDoList = () => {
     return todoList;
 }
 
-if (window.fetch) {
-    console.log("fetch a tester");
-} else {
-    console.log("oublie fetch");
-}
-
-
 //TOILETS
 const toiletsSound = WA.loadSound("flush.mp3");
 const config = {
@@ -71,6 +64,7 @@ WA.onLeaveZone('toilets', () => {
 WA.onEnterZone('wcPicture', () => {
     validateSuccess('wcPicture');
     console.log(successBoard);
+    console.log('something');
 });
 
 //SUCCESS BOARD
