@@ -1,4 +1,4 @@
-const version = "0.5.10"
+const version = "0.5.12"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -7,6 +7,7 @@ const successBoard = {
     wcPicture: {description: "Les photos des anciens dans les WC"},
     superGenial: {description: "La vidéo du film légo dans la salle debian"},
     babyShark: {description: "La vidéo de baby shark dans la douche"},
+    axe: {description: "La hache dans le coin du dressing"},
 };
 let sucessPopup;
 
@@ -26,7 +27,7 @@ const getSuccessList = () => {
         .filter(value => value.valid)
         .map(sucess => sucess.description)
         .reduce((list, desc) => {
-            return `${list}
+            return `${list}<br/>
             ${desc}`;
         }, '');
     return okList;
@@ -37,7 +38,7 @@ const getToDoList = () => {
         .keys(successBoard)
         .filter(key => !successBoard[key].valid)
         .reduce((list, name) => {
-            return `${list}
+            return `${list}<br/>
             ${name} ???`;
         }, '');
     return todoList;
@@ -74,6 +75,11 @@ WA.onEnterZone('superGenialZone', () => {
     validateSuccess('superGenial');
 });
 
+//WC AXE ZONE
+WA.onEnterZone('axeZone', () => {
+    validateSuccess('axe');
+});
+
 //WC PHILLIPE ZONE
 const phillipeSound = WA.loadSound("assets\/phillipe.mp3");
 const phillipeSoundConfig = {
@@ -97,9 +103,9 @@ WA.onEnterZone('successBoardZone', () => {
     //WA.displayBubble();
     sucessPopup = WA.openPopup(
         "successBoardPopup", 
-        `SUCCESS BOARD
-        Tu a découvert 
-        ${validSuccessCount} succes
+        `SUCCESS BOARD<br/>
+        Tu a découvert <br/>
+        ${validSuccessCount} succes<br/>
         sur ${successCount}`, 
         [{
             label: "Next",
@@ -108,9 +114,9 @@ WA.onEnterZone('successBoardZone', () => {
                 popup.close();
                 sucessPopup = WA.openPopup(
                     "successBoardPopup", 
-                    `SUCCESS BOARD
-                    ${getSuccessList()}
-                    ${getToDoList()}
+                    `SUCCESS BOARD<br/>
+                    ${getSuccessList()}<br/>
+                    ${getToDoList()}<br/>
                     `, 
                     [{
                         label: "Close",
