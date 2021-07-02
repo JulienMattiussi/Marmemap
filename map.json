@@ -385,14 +385,14 @@
          "objects":[
                 {
                  "height":258.666666666667,
-                 "id":2,
-                 "name":"successPopup",
+                 "id":3,
+                 "name":"successPop",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":186.666666666667,
-                 "x":448,
-                 "y":88
+                 "width":286.666666666667,
+                 "x":404,
+                 "y":93.3333333333333
                 }],
          "offsetx":-221.333333333333,
          "offsety":49.3333333333333,
@@ -451,7 +451,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":3,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "properties":[
         {
