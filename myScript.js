@@ -1,16 +1,47 @@
+const version = "0.5.0"
+
+console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
-let test = 0;
+
+const successBoard = {
+    wcPicture: {description: "Les photos des anciens dans les WC"},
+    superGenial: {description: "La vidéo du film légo dans la salle debian"},
+    babyShark: {description: "La vidéo de baby shark dans la salle de bain"},
+};
 let sucessPopup;
 
-var toiletsSound = WA.loadSound("flush.mp3");
-var config = {
-    volume : 0.1,
-    loop : false,
-    rate : 1,
-    detune : 1,
-    delay : 0,
-    seek : 0,
-    mute : false
+
+const validateSuccess = (name) => {
+    successBoard[name].valid = true;
+}
+
+const getSuccessCount = () => Object.keys(successBoard).length;
+
+const getValidSuccessCount = () => 
+    Object.values(successBoard).filter(value => value.valid).length;
+
+const getSuccessList = () => {
+    const okList = Object
+        .values(successBoard)
+        .filter(value => value.valid)
+        .map(sucess => sucess.description)
+        .reduce((list, desc) => {
+            return `${list}
+            ${desc}`;
+        }, '');
+    return okList;
+}
+
+const getToDoList = () => {
+    const todoList = Object
+        .keys(successBoard)
+        .map(key => successBoard[key].description)
+        .filter(key => !successBoard[key].valid)
+        .reduce((list, name) => {
+            return `${list}
+            ${name} ???`;
+        }, '');
+    return todoList;
 }
 
 if (window.fetch) {
@@ -20,31 +51,65 @@ if (window.fetch) {
 }
 
 
+//TOILETS
+const toiletsSound = WA.loadSound("flush.mp3");
+const config = {
+    volume : 0.1,
+    loop : false,
+    rate : 1,
+    detune : 1,
+    delay : 0,
+    seek : 0,
+    mute : false
+}
 
-WA.onEnterZone('toilets', () => {
-    test++;
-    WA.displayBubble();
-    console.log(test);
+WA.onLeaveZone('toilets', () => {
+    toiletsSound.play(config);
+});
+
+//WC PICTURE
+WA.onEnterZone('wcPicture', () => {
+    validateSuccess('wcPicture');
+});
+
+//SUCCESS BOARD
+WA.onEnterZone('successBoard', () => {
+    const successCount = getSuccessCount();
+    const validSuccessCount = getValidSuccessCount(); 
+    //WA.displayBubble();
     sucessPopup = WA.openPopup(
         "successPopup", 
         `SUCCESS BOARD
-        to be completed
+        Tu a découvert 
+        ${validSuccessCount} succes
+        sur ${successCount}
         `, 
         [{
-            label: "Close",
+            label: "Next",
             className: "primary",
             callback: (popup) => {
-                // Close the popup when the "Close" button is pressed.
                 popup.close();
+                sucessPopup = WA.openPopup(
+                    "successPopup", 
+                    `SUCCESS BOARD
+                    ${getSuccessList()}
+                    ${getToDoList()}
+                    `, 
+                    [{
+                        label: "Close",
+                        className: "primary",
+                        callback: (popup) => {
+                            popup.close();
+                        }
+                    }]
+                );
             }
         }]
     );
 });
 
-WA.onLeaveZone('toilets', () => {
-    test++;
+WA.onLeaveZone('successBoard', () => {
     toiletsSound.play(config);
-    WA.removeBubble();
-    console.log(test);
+    //WA.removeBubble();
     sucessPopup.close();
 });
