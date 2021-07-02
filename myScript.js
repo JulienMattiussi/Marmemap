@@ -63,6 +63,7 @@ const config = {
 }
 
 WA.onLeaveZone('toilets', () => {
+    console.log(successBoard);
     toiletsSound.play(config);
 });
 
