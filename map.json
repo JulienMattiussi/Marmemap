@@ -425,15 +425,15 @@
          "name":"floorLayer",
          "objects":[
                 {
-                 "height":57.3333333333334,
+                 "height":325.333333333333,
                  "id":4,
                  "name":"successBoardPopup",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":90.6666666666665,
-                 "x":489.333333333333,
-                 "y":172
+                 "width":377.333333333333,
+                 "x":281.333333333333,
+                 "y":73.3333333333333
                 }],
          "offsetx":-237.333333333333,
          "offsety":168,
