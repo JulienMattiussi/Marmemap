@@ -6,7 +6,7 @@ console.log(Object.keys(WA));
 const successBoard = {
     wcPicture: {description: "Les photos des anciens dans les WC"},
     superGenial: {description: "La vidéo du film légo dans la salle debian"},
-    babyShark: {description: "La vidéo de baby shark dans la salle de bain"},
+    babyShark: {description: "La vidéo de baby shark dans la douche"},
 };
 let sucessPopup;
 
@@ -43,9 +43,9 @@ const getToDoList = () => {
     return todoList;
 }
 
-//TOILETS
+//TOILETS ZONE
 const toiletsSound = WA.loadSound("assets\/flush.mp3");
-const config = {
+const toiletsSoundConfig = {
     volume : 0.1,
     loop : false,
     rate : 1,
@@ -56,20 +56,44 @@ const config = {
 }
 
 WA.onLeaveZone('toiletsZone', () => {
-    toiletsSound.play(config);
+    toiletsSound.play(toiletsSoundConfig);
 });
 
-//WC PICTURE
+//WC PICTURE ZONE
 WA.onEnterZone('wcPictureZone', () => {
     validateSuccess('wcPicture');
 });
 
+//WC BABYSHARK ZONE
+WA.onEnterZone('babySharkZone', () => {
+    validateSuccess('babyShark');
+});
+
+//WC SUPERGENIAL ZONE
+WA.onEnterZone('superGenialZone', () => {
+    validateSuccess('superGenial');
+});
+
+//WC PHILLIPE ZONE
+const phillipeSound = WA.loadSound("assets\/phillipe.mp3");
+const phillipeSoundConfig = {
+    volume : 0.3,
+    loop : false,
+    rate : 1,
+    detune : 1,
+    delay : 5,
+    seek : 0,
+    mute : false
+}
+
+WA.onEnterZone('phillipeZone', () => {
+    phillipeSound.play(phillipeSoundConfig);
+});
+
 //SUCCESS BOARD
 WA.onEnterZone('successBoardZone', () => {
-    console.log(successBoard);
     const successCount = getSuccessCount();
     const validSuccessCount = getValidSuccessCount(); 
-    console.log(validSuccessCount);
     //WA.displayBubble();
     sucessPopup = WA.openPopup(
         "successBoardPopup", 
@@ -103,6 +127,5 @@ WA.onEnterZone('successBoardZone', () => {
 
 WA.onLeaveZone('successBoardZone', () => {
     //WA.removeBubble();
-    console.log(sucessPopup);
     sucessPopup.close();
 });
