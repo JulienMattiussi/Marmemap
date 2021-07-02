@@ -1,4 +1,4 @@
-const version = "0.5.0"
+const version = "0.5.1"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -35,7 +35,6 @@ const getSuccessList = () => {
 const getToDoList = () => {
     const todoList = Object
         .keys(successBoard)
-        .map(key => successBoard[key].description)
         .filter(key => !successBoard[key].valid)
         .reduce((list, name) => {
             return `${list}
