@@ -45,7 +45,6 @@ WA.onLeaveZone('toilets', () => {
     test++;
     toiletsSound.play(config);
     WA.removeBubble();
-    console.log(Object.keys(WA));
     console.log(test);
     sucessPopup.close();
 });
