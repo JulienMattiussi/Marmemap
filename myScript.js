@@ -1,4 +1,4 @@
-const version = "0.5.8"
+const version = "0.5.10"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
