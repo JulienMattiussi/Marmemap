@@ -19,19 +19,26 @@ if (window.fetch) {
     console.log("oublie fetch");
 }
 
-/*sucessPopup = WA.openPopup("popupRectangle", 'Hello world!', [{
-    label: "Close",
-    className: "primary",
-    callback: (popup) => {
-        // Close the popup when the "Close" button is pressed.
-        popup.close();
-    }
-}]);*/
+
 
 WA.onEnterZone('toilets', () => {
     test++;
     WA.displayBubble();
     console.log(test);
+    sucessPopup = WA.openPopup(
+        "successPopup", 
+        `SUCCESS BOARD
+        to be completed
+        `, 
+        [{
+            label: "Close",
+            className: "primary",
+            callback: (popup) => {
+                // Close the popup when the "Close" button is pressed.
+                popup.close();
+            }
+        }]
+    );
 });
 
 WA.onLeaveZone('toilets', () => {
@@ -40,4 +47,5 @@ WA.onLeaveZone('toilets', () => {
     WA.removeBubble();
     console.log(Object.keys(WA));
     console.log(test);
+    sucessPopup.close();
 });
