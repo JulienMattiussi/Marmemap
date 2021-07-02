@@ -1,4 +1,4 @@
-const version = "0.5.2"
+const version = "0.5.3"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -70,6 +70,7 @@ WA.onLeaveZone('toilets', () => {
 //WC PICTURE
 WA.onEnterZone('wcPicture', () => {
     validateSuccess('wcPicture');
+    console.log(successBoard);
 });
 
 //SUCCESS BOARD

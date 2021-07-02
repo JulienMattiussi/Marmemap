@@ -382,18 +382,7 @@
          "draworder":"topdown",
          "id":15,
          "name":"floorLayer",
-         "objects":[
-                {
-                 "height":258.666666666667,
-                 "id":3,
-                 "name":"successPop",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":286.666666666667,
-                 "x":404,
-                 "y":93.3333333333333
-                }],
+         "objects":[],
          "offsetx":-237.333333333333,
          "offsety":168,
          "opacity":1,
