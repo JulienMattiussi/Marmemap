@@ -237,7 +237,7 @@
         {
          "draworder":"topdown",
          "id":41,
-         "name":"Popups",
+         "name":"successPopup",
          "objects":[
                 {
                  "height":242,
