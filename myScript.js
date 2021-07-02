@@ -13,6 +13,12 @@ var config = {
     mute : false
 }
 
+if (window.fetch) {
+    console.log("fetch a tester");
+} else {
+    console.log("oublie fetch");
+}
+
 /*sucessPopup = WA.openPopup("popupRectangle", 'Hello world!', [{
     label: "Close",
     className: "primary",
@@ -24,14 +30,14 @@ var config = {
 
 WA.onEnterZone('toilets', () => {
     test++;
-    displayBubble();
+    WA.displayBubble();
     console.log(test);
 });
 
 WA.onLeaveZone('toilets', () => {
     test++;
     toiletsSound.play(config);
-    removeBubble();
+    WA.removeBubble();
     console.log(Object.keys(WA));
     console.log(test);
 });
