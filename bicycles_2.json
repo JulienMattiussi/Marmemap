@@ -1,0 +1,14 @@
+{ "columns":8,
+ "image":"bicycles.png",
+ "imageheight":512,
+ "imagewidth":256,
+ "margin":0,
+ "name":"bicycles",
+ "spacing":0,
+ "tilecount":128,
+ "tiledversion":"1.7.0",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.6"
+}
