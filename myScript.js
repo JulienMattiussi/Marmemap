@@ -1,4 +1,4 @@
-const version = "0.7.2"
+const version = "0.7.3"
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -109,15 +109,15 @@ WA.onLeaveZone('philippeZone', () => {
 });
 
 //NEIGHBOUR ZONE
-WA.onEnterZone('intollerableZone', () => {
+WA.onEnterZone('intolerableZone', () => {
     neighbourPopup = WA.openPopup(
-        "intollerablePopup", 
-        'Ca devient intollérable !!', 
+        "intolerablePopup", 
+        'Ca devient intolérable !!', 
         []
     );
 });
 
-WA.onLeaveZone('intollerableZone', () => {
+WA.onLeaveZone('intolerableZone', () => {
     neighbourPopup.close();
 });
 
