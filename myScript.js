@@ -1,4 +1,4 @@
-const version = "0.5.13"
+const version = "0.5.14"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -62,7 +62,12 @@ WA.onLeaveZone('toiletsZone', () => {
 
 //WC PICTURE ZONE
 WA.onEnterZone('wcPictureZone', () => {
+    WA.openCoWebSite("https://julienmattiussi.github.io/Marmemap/assets/wc.jpg")
     validateSuccess('wcPicture');
+});
+
+WA.onLeaveZone('wcPictureZone', () => {
+    WA.closeCoWebSite();
 });
 
 //WC BABYSHARK ZONE
@@ -80,9 +85,9 @@ WA.onEnterZone('axeZone', () => {
     validateSuccess('axe');
 });
 
-//WC PHILLIPE ZONE
-const phillipeSound = WA.loadSound("assets\/philippe.mp3");
-const phillipeSoundConfig = {
+//WC PHILIPPE ZONE
+const philippeSound = WA.loadSound("assets\/philippe.mp3");
+const philippeSoundConfig = {
     volume : 0.3,
     loop : false,
     rate : 1,
@@ -92,8 +97,8 @@ const phillipeSoundConfig = {
     mute : false
 }
 
-WA.onEnterZone('phillipeZone', () => {
-    phillipeSound.play(phillipeSoundConfig);
+WA.onEnterZone('philippeZone', () => {
+    philippeSound.play(philippeSoundConfig);
 });
 
 //SUCCESS BOARD
