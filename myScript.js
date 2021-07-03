@@ -1,4 +1,4 @@
-const version = "0.6.0"
+const version = "0.6.1"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -8,8 +8,10 @@ const successBoard = {
     superGenial: {description: "La vidéo du film légo dans la salle debian"},
     babyShark: {description: "La vidéo de baby shark dans la douche"},
     axe: {description: "La hache dans le coin du dressing"},
+    philippe: {description: "Philiiiipe après 5s d'attente au baby"},
 };
 let sucessPopup;
+let philippeTimer;
 
 
 const validateSuccess = (name) => {
@@ -93,7 +95,14 @@ const philippeSoundConfig = {
 }
 
 WA.onEnterZone('philippeZone', () => {
+    philippeTimer = Date.now();
     philippeSound.play(philippeSoundConfig);
+});
+
+WA.onLeaveZone('philippeZone', () => {
+    if (Date.now() > philippeTimer + 5000) {
+        validateSuccess('philippe');
+    }
 });
 
 //SUCCESS BOARD
