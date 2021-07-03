@@ -1,7 +1,7 @@
-const version = "0.7.0"
+const version = "0.7.1"
 
-console.log(`MarmeMap version : ${version}}`);
-console.log(Object.keys(WA));
+console.log(`MarmeMap version : ${version}`);
+console.log(`WA API: ${Object.keys(WA)}`);
 
 const successBoard = {
     wcPicture: {description: "Les photos des anciens dans les WC"},
