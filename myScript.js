@@ -1,4 +1,4 @@
-const version = "0.5.22"
+const version = "0.5.23"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -27,7 +27,7 @@ const getSuccessList = () => {
         .filter(value => value.valid)
         .map(sucess => sucess.description)
         .reduce((list, desc) => {
-            return `${list}
+            return `${list} / 
             ${desc}`;
         }, '');
     return okList;
@@ -38,7 +38,7 @@ const getToDoList = () => {
         .keys(successBoard)
         .filter(key => !successBoard[key].valid)
         .reduce((list, name) => {
-            return `${list}
+            return `${list} / 
             ${name} ???`;
         }, '');
     return todoList;
@@ -63,10 +63,6 @@ WA.onLeaveZone('toiletsZone', () => {
 //WC PICTURE ZONE
 WA.onEnterZone('wcPictureZone', () => {
     validateSuccess('wcPicture');
-});
-
-WA.onLeaveZone('wcPictureZone', () => {
-    WA.closeCoWebSite();
 });
 
 //WC BABYSHARK ZONE
@@ -116,16 +112,11 @@ WA.onEnterZone('successBoardZone', () => {
             label: "Next",
             className: "primary",
             callback: (popup) => {
-                //popup.close();
-                const style = document.createAttribute("style"); 
-                style.value = "white-space:pre-line;";
-                let popupDiv = document.getElementsByClassName("nes-container with-title is-centered");
-                console.log(popupDiv);
-                popupDiv[0] ? popupDiv[0].setAttributeNode(style) : null;      
+                popup.close(); 
                 sucessPopup = WA.openPopup(
                     "successBoardPopup", 
                     `SUCCESS BOARD
-                    
+
                     ${getSuccessList()}
                     ${getToDoList()}
                     `, 
@@ -140,6 +131,13 @@ WA.onEnterZone('successBoardZone', () => {
             }
         }]
     );
+
+    
+    const style = document.createAttribute("style"); 
+    style.value = "white-space:pre-line;";
+    let popupDiv = document.getElementsByClassName("nes-container with-title is-centered");
+    console.log(popupDiv);
+    popupDiv[0] ? popupDiv[0].setAttributeNode(style) : null;     
     
 });
 
