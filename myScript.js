@@ -1,7 +1,7 @@
-const version = "0.6.2"
+const version = "0.7.1"
 
-console.log(`MarmeMap version : ${version}}`);
-console.log(Object.keys(WA));
+console.log(`MarmeMap version : ${version}`);
+console.log(`WA API: ${Object.keys(WA)}`);
 
 const successBoard = {
     wcPicture: {description: "Les photos des anciens dans les WC"},
@@ -11,6 +11,7 @@ const successBoard = {
     philippe: {description: "Philiiiipe après 5s d'attente au baby"},
 };
 let sucessPopup;
+let neighbourPopup;
 let philippeTimer;
 const philippeDelay = 5 //in seconds
 
@@ -105,6 +106,19 @@ WA.onLeaveZone('philippeZone', () => {
     if (Date.now() > philippeTimer + philippeDelay*1000) {
         validateSuccess('philippe');
     }
+});
+
+//NEIGHBOUR ZONE
+WA.onEnterZone('intollerableZone', () => {
+    neighbourPopup = WA.openPopup(
+        "intollerablePopup", 
+        'Ca devient intollérable !!', 
+        []
+    );
+});
+
+WA.onLeaveZone('intollerableZone', () => {
+    neighbourPopup.close();
 });
 
 //SUCCESS BOARD
