@@ -63,7 +63,7 @@ WA.onLeaveZone('toiletsZone', () => {
 //WC PICTURE ZONE
 WA.onEnterZone('wcPictureZone', () => {
     console.log('wcPictureZone');
-    WA.openCoWebSite("https://julienmattiussi.github.io/Marmemap/assets/wc.jpg")
+    WA.openCoWebSite("https://julienmattiussi.github.io/Marmemap/assets/wc.jpg");
     validateSuccess('wcPicture');
 });
 
