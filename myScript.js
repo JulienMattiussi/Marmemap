@@ -1,4 +1,4 @@
-const version = "0.5.18"
+const version = "0.5.19"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -64,7 +64,7 @@ WA.onLeaveZone('toiletsZone', () => {
 WA.onEnterZone('wcPictureZone', () => {
     console.log('wcPictureZone');
     //WA.openCoWebSite("https://julienmattiussi.github.io/Marmemap/assets/wc.jpg");
-    validateSuccess('wcPicture');
+    //validateSuccess('wcPicture');
 });
 
 WA.onLeaveZone('wcPictureZone', () => {
@@ -135,6 +135,10 @@ WA.onEnterZone('successBoardZone', () => {
             }
         }]
     );
+    const style = document.createAttribute("style"); 
+    style.value = "{white-space:pre-line;}";
+    let popupDiv = document.getElementsByClassName("nes-container with-title is-centered");
+    popupDiv.setAttributeNode(style);      
 });
 
 WA.onLeaveZone('successBoardZone', () => {
