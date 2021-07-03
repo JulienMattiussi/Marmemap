@@ -1,4 +1,4 @@
-const version = "0.6.1"
+const version = "0.6.2"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -12,6 +12,7 @@ const successBoard = {
 };
 let sucessPopup;
 let philippeTimer;
+const philippeDelay = 5 //in seconds
 
 
 const validateSuccess = (name) => {
@@ -89,7 +90,7 @@ const philippeSoundConfig = {
     loop : false,
     rate : 1,
     detune : 1,
-    delay : 5,
+    delay : philippeDelay,
     seek : 0,
     mute : false
 }
@@ -100,7 +101,8 @@ WA.onEnterZone('philippeZone', () => {
 });
 
 WA.onLeaveZone('philippeZone', () => {
-    if (Date.now() > philippeTimer + 5000) {
+    philippeSound.stop();
+    if (Date.now() > philippeTimer + philippeDelay*1000) {
         validateSuccess('philippe');
     }
 });
@@ -141,12 +143,13 @@ WA.onEnterZone('successBoardZone', () => {
         }]
     );
 
-    
-    const style = document.createAttribute("style"); 
-    style.value = "white-space:pre-line;";
-    let popupDiv = document.getElementsByClassName("nes-container with-title is-centered");
-    console.log(popupDiv);
-    popupDiv[0] ? popupDiv[0].setAttributeNode(style) : null;     
+    setTimeout(() => {
+        const style = document.createAttribute("style"); 
+        style.value = "white-space:pre-line;";
+        let popupDiv = document.getElementsByClassName("nes-container with-title is-centered");
+        console.log(popupDiv);
+        popupDiv[0] ? popupDiv[0].setAttributeNode(style) : null;     
+    }, 5000);
     
 });
 
