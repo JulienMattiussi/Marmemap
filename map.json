@@ -112,6 +112,11 @@
                  "opacity":1,
                  "properties":[
                         {
+                         "name":"openWebsite",
+                         "type":"string",
+                         "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/assets\/wc.jpg"
+                        }, 
+                        {
                          "name":"zone",
                          "type":"string",
                          "value":"wcPictureZone"
@@ -330,7 +335,7 @@
          "name":"House",
          "opacity":1,
          "type":"group",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -341,7 +346,7 @@
          "name":"desks",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":39,
          "x":0,
          "y":0
