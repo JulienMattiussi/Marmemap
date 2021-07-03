@@ -1,4 +1,4 @@
-const version = "0.5.20"
+const version = "0.5.21"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -117,7 +117,12 @@ WA.onEnterZone('successBoardZone', () => {
             label: "Next",
             className: "primary",
             callback: (popup) => {
-                popup.close();
+                //popup.close();
+                const style = document.createAttribute("style"); 
+    style.value = "{white-space:pre-line;}";
+    let popupDiv = document.getElementsByClassName("nes-container with-title is-centered");
+    console.log(popupDiv);
+    popupDiv ? popupDiv[0].setAttributeNode(style) : null;      
                 sucessPopup = WA.openPopup(
                     "successBoardPopup", 
                     `SUCCESS BOARD\n
@@ -135,11 +140,7 @@ WA.onEnterZone('successBoardZone', () => {
             }
         }]
     );
-    const style = document.createAttribute("style"); 
-    style.value = "{white-space:pre-line;}";
-    let popupDiv = document.getElementsByClassName("nes-container with-title is-centered");
-    console.log(popupDiv);
-    popupDiv ? popupDiv[0].setAttributeNode(style) : null;      
+    
 });
 
 WA.onLeaveZone('successBoardZone', () => {
