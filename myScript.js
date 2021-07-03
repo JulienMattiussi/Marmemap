@@ -1,4 +1,4 @@
-const version = "0.5.21"
+const version = "0.5.22"
 
 console.log(`MarmeMap version : ${version}}`);
 console.log(Object.keys(WA));
@@ -27,7 +27,7 @@ const getSuccessList = () => {
         .filter(value => value.valid)
         .map(sucess => sucess.description)
         .reduce((list, desc) => {
-            return `${list}\n
+            return `${list}
             ${desc}`;
         }, '');
     return okList;
@@ -38,7 +38,7 @@ const getToDoList = () => {
         .keys(successBoard)
         .filter(key => !successBoard[key].valid)
         .reduce((list, name) => {
-            return `${list}\n
+            return `${list}
             ${name} ???`;
         }, '');
     return todoList;
@@ -62,8 +62,6 @@ WA.onLeaveZone('toiletsZone', () => {
 
 //WC PICTURE ZONE
 WA.onEnterZone('wcPictureZone', () => {
-    console.log('wcPictureZone');
-    WA.openCoWebSite("https://julienmattiussi.github.io/Marmemap/assets/wc.jpg");
     validateSuccess('wcPicture');
 });
 
@@ -109,9 +107,10 @@ WA.onEnterZone('successBoardZone', () => {
     //WA.displayBubble();
     sucessPopup = WA.openPopup(
         "successBoardPopup", 
-        `SUCCESS BOARD\n
-        Tu a découvert \n
-        ${validSuccessCount} succes\n
+        `SUCCESS BOARD
+
+        Tu a découvert 
+        ${validSuccessCount} succes
         sur ${successCount}`, 
         [{
             label: "Next",
@@ -119,15 +118,16 @@ WA.onEnterZone('successBoardZone', () => {
             callback: (popup) => {
                 //popup.close();
                 const style = document.createAttribute("style"); 
-    style.value = "{white-space:pre-line;}";
-    let popupDiv = document.getElementsByClassName("nes-container with-title is-centered");
-    console.log(popupDiv);
-    popupDiv ? popupDiv[0].setAttributeNode(style) : null;      
+                style.value = "white-space:pre-line;";
+                let popupDiv = document.getElementsByClassName("nes-container with-title is-centered");
+                console.log(popupDiv);
+                popupDiv[0] ? popupDiv[0].setAttributeNode(style) : null;      
                 sucessPopup = WA.openPopup(
                     "successBoardPopup", 
-                    `SUCCESS BOARD\n
-                    ${getSuccessList()}\n
-                    ${getToDoList()}\n
+                    `SUCCESS BOARD
+                    
+                    ${getSuccessList()}
+                    ${getToDoList()}
                     `, 
                     [{
                         label: "Close",
