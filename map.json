@@ -40,12 +40,12 @@
                         {
                          "name":"openWebsite",
                          "type":"string",
-                         "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/assets\/ShiningThierry.jpg"
+                         "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/links\/ShiningThierry.jpg"
                         }, 
                         {
                          "name":"playAudio",
                          "type":"string",
-                         "value":"assets\/Freak-Music-07-A-really-dark-alley-cut.mp3"
+                         "value":"assets\/freakMusic.mp3"
                         }, 
                         {
                          "name":"zone",
@@ -114,7 +114,7 @@
                         {
                          "name":"openWebsite",
                          "type":"string",
-                         "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/assets\/wc.jpg"
+                         "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/links\/wc.jpg"
                         }, 
                         {
                          "name":"zone",
@@ -353,7 +353,7 @@
          "name":"House",
          "opacity":1,
          "type":"group",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
