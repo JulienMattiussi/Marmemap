@@ -40,7 +40,7 @@
                         {
                          "name":"openWebsite",
                          "type":"string",
-                         "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/links\/ShiningThierry.jpg"
+                         "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/links\/ShiningThierry.html"
                         }, 
                         {
                          "name":"playAudio",
@@ -114,7 +114,7 @@
                         {
                          "name":"openWebsite",
                          "type":"string",
-                         "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/links\/wc.jpg"
+                         "value":"https:\/\/julienmattiussi.github.io\/Marmemap\/links\/wc.html"
                         }, 
                         {
                          "name":"zone",
