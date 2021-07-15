@@ -1,4 +1,4 @@
-const version = "0.7.11"
+const version = "0.7.12"
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -198,7 +198,8 @@ let myHeaders = new Headers();
 let myInit = { method: 'GET',
                 headers: myHeaders,
                 mode: 'cors',
-                cache: 'default' };
+                cache: 'default',
+                origin: '*' };
 
 let myRequest = new Request('https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=2', myInit);
 
