@@ -205,6 +205,9 @@ if (window.fetch) {
 
     fetch(myRequest, myInit)
         .then((response) => {
+            return response.json();
+        })
+        .then((response) => {
             console.log(response);
         })
         .catch((error) => {
