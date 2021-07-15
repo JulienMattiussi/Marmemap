@@ -1,4 +1,4 @@
-const version = "0.7.6"
+const version = "0.7.7"
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -9,11 +9,13 @@ const successBoard = {
     babyShark: {description: "La vidéo de baby shark dans la douche"},
     axe: {description: "La hache dans le coin du dressing"},
     philippe: {description: "Philiiiipe après 5s d'attente au baby"},
+    intolerable: {description: "Parler 3 fois au voisin"},
 };
 let sucessPopup;
 let neighbourPopup;
 let philippeTimer;
 const philippeDelay = 5 //in seconds
+let intolerableCount = 0;
 
 
 const validateSuccess = (name) => {
@@ -110,15 +112,27 @@ WA.onLeaveZone('philippeZone', () => {
 
 //NEIGHBOUR ZONE
 WA.onEnterZone('intolerableZone', () => {
+    let intolerableText;
+    switch(intolerableCount) {
+        case 0: 
+            intolerableText = 'Vous pouriez dire bonjour !';
+            break;
+        case 1: 
+            intolerableText = 'Faites moins de bruit, merci !';
+            break;
+        default: 
+            intolerableText = "Vous pouriez dire bonjour !";
+    }
     neighbourPopup = WA.openPopup(
         "intolerablePopup", 
-        'Ca devient intolérable !!', 
+        intolerableText,
         []
     );
 });
 
 WA.onLeaveZone('intolerableZone', () => {
     neighbourPopup.close();
+    intolerableCount ++;
 });
 
 //SUCCESS BOARD
@@ -175,7 +189,16 @@ WA.onLeaveZone('successBoardZone', () => {
 
 if (window.fetch) {
     console.log("yes fetch")
-    fetch('https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=2')
+    var myHeaders = new Headers();
+
+    var myInit = { method: 'GET',
+                   headers: myHeaders,
+                   mode: 'no-cors',
+                   cache: 'default' };
+    
+    var myRequest = new Request('https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=2', myInit);
+
+    fetch(myRequest, myInit)
         .then((response) => {
             console.log(response);
         })
