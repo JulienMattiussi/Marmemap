@@ -1,4 +1,4 @@
-const version = "0.7.9"
+const version = "0.7.10"
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -191,29 +191,29 @@ WA.onLeaveZone('successBoardZone', () => {
 });
 
 
-if (window.fetch) {
-    console.log('yes fetch')
-    let myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
+console.log('start fetch')
+let myHeaders = new Headers();
+//myHeaders.append('Content-Type', 'application/json');
 
-    let myInit = { method: 'GET',
-                   headers: myHeaders,
-                   mode: 'no-cors',
-                   cache: 'default' };
-    
-    let myRequest = new Request('https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=2', myInit);
+let myInit = { method: 'GET',
+                headers: myHeaders,
+                mode: 'no-cors',
+                cache: 'default' };
 
-    fetch(myRequest, myInit)
-        .then((response) => {
-            return response.json();
-        })
-        .then((response) => {
-            console.log(response);
-            console.log(response.body);
-        })
-        .catch((error) => {
-            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
-        });
-} else {
-    console.log('no fetch')
-}
+let myRequest = new Request('https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=2', myInit);
+
+fetch(myRequest, myInit)
+    .then((response) => {
+        console.log('p1');
+        console.log(response);
+        console.log(response.body);
+    })
+    .then((response) =>  response.json())
+    .then((response) => {
+        console.log('p2');
+        console.log(response);
+        console.log(response.body);
+    })
+    .catch((error) => {
+        console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+    });
