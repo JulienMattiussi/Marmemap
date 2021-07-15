@@ -1,4 +1,4 @@
-const version = "0.7.5"
+const version = "0.7.6"
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -171,3 +171,17 @@ WA.onLeaveZone('successBoardZone', () => {
     //WA.removeBubble();
     sucessPopup.close();
 });
+
+
+if (window.fetch) {
+    console.log("yes fetch")
+    fetch('https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=2')
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+        });
+} else {
+    console.log("no fetch")
+}
