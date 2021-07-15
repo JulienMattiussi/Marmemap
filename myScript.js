@@ -1,4 +1,4 @@
-const version = "0.7.8"
+const version = "0.7.9"
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -209,6 +209,7 @@ if (window.fetch) {
         })
         .then((response) => {
             console.log(response);
+            console.log(response.body);
         })
         .catch((error) => {
             console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
