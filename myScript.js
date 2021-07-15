@@ -1,4 +1,4 @@
-const version = "0.7.7"
+const version = "0.7.8"
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -19,7 +19,10 @@ let intolerableCount = 0;
 
 
 const validateSuccess = (name) => {
-    successBoard[name].valid = true;
+    let success = successBoard[name];
+    if (!success.valid) {
+        success.valid = true;
+    }
 }
 
 const getSuccessCount = () => Object.keys(successBoard).length;
@@ -121,7 +124,8 @@ WA.onEnterZone('intolerableZone', () => {
             intolerableText = 'Faites moins de bruit, merci !';
             break;
         default: 
-            intolerableText = "Vous pouriez dire bonjour !";
+            intolerableText = 'Ca devient intolérable !!';
+            validateSuccess('intolerable');
     }
     neighbourPopup = WA.openPopup(
         "intolerablePopup", 
@@ -188,15 +192,16 @@ WA.onLeaveZone('successBoardZone', () => {
 
 
 if (window.fetch) {
-    console.log("yes fetch")
-    var myHeaders = new Headers();
+    console.log('yes fetch')
+    let myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
 
-    var myInit = { method: 'GET',
+    let myInit = { method: 'GET',
                    headers: myHeaders,
                    mode: 'no-cors',
                    cache: 'default' };
     
-    var myRequest = new Request('https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=2', myInit);
+    let myRequest = new Request('https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=2', myInit);
 
     fetch(myRequest, myInit)
         .then((response) => {
@@ -206,5 +211,5 @@ if (window.fetch) {
             console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
         });
 } else {
-    console.log("no fetch")
+    console.log('no fetch')
 }
