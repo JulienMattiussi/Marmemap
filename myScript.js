@@ -1,4 +1,4 @@
-const version = "0.7.13";
+const version = "0.7.14";
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -178,7 +178,6 @@ WA.onEnterZone("successBoardZone", () => {
     let popupDiv = document.getElementsByClassName(
       "nes-container with-title is-centered"
     );
-    console.log(popupDiv);
     popupDiv[0] ? popupDiv[0].setAttributeNode(style) : null;
   }, 5000);
 });
@@ -191,8 +190,6 @@ WA.onLeaveZone("successBoardZone", () => {
 console.log("start fetch");
 let myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Access-Control-Allow-Origin", "*");
-myHeaders.append("Origin", "*");
 
 let myInit = {
   method: "GET",
@@ -203,22 +200,13 @@ let myInit = {
 
 let myRequest = new Request(
   "https://cat-fact.herokuapp.com/facts?animal_type=cat",
-  //"https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=2",
   myInit
 );
 
 fetch(myRequest, myInit)
-  .then((response) => {
-    console.log("p1");
-    console.log(response);
-    console.log(response.body);
-    return response;
-  })
   .then((response) => response.json())
   .then((response) => {
-    console.log("p2");
     console.log(response);
-    console.log(response.body);
   })
   .catch((error) => {
     console.log(
