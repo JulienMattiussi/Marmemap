@@ -1,4 +1,4 @@
-const version = "0.7.18";
+const version = "0.7.19";
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -225,22 +225,27 @@ WA.onEnterZone("catZone", () => {
 
 WA.onLeaveZone("catZone", () => {
   catPopup.close();
-  console.log("window.localStorage", window.localStorage);
+  console.log("window.localStorage");
+  console.log(window.localStorage);
 if (window.localStorage) {
   let user = "";
   console.log("u1");
   try {
     user = localStorage.getItem('User');
-    console.log("u1 user", user);
+    console.log("u1 user");
+    console.log(user);
   }
   catch (e) {
     console.log("e", e);
-    console.log("window.parent", window.parent);
-    console.log("window.parent.localStorage", window.parent.localStorage);
+    console.log("window.parent");
+    console.log(window.parent);
+    console.log("window.parent.localStorage");
+    console.log(window.parent.localStorage);
     if (window.parent && window.parent.localStorage) {
       console.log("u2");
       user = window.parent.localStorage.getItem('User');
-      console.log("u2 user", user);
+      console.log("u2 user");
+      console.log(user);
     }
   }
 }
