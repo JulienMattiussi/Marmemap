@@ -190,7 +190,7 @@ WA.onLeaveZone("successBoardZone", () => {
 });
 
 //CAT ZONE
-let myHeaders = new Headers();
+/*let myHeaders = new Headers();
 //myHeaders.append("Content-Type", "application/json");
 
 let myInit = {
@@ -235,6 +235,6 @@ WA.onLeaveZone("catZone", () => {
       console.log("u2 user");
       console.log(user);
     }
-});
+});*/
 
 
