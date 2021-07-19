@@ -1,4 +1,4 @@
-const version = "0.7.14";
+const version = "0.7.15";
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -13,6 +13,8 @@ const successBoard = {
 };
 let sucessPopup;
 let neighbourPopup;
+let catPopup;
+let catText = "Nothing to tell you today";
 let philippeTimer;
 const philippeDelay = 5; //in seconds
 let intolerableCount = 0;
@@ -187,9 +189,9 @@ WA.onLeaveZone("successBoardZone", () => {
   sucessPopup.close();
 });
 
-console.log("start fetch");
+//CAT ZONE
 let myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+//myHeaders.append("Content-Type", "application/json");
 
 let myInit = {
   method: "GET",
@@ -199,17 +201,32 @@ let myInit = {
 };
 
 let myRequest = new Request(
-  "https://cat-fact.herokuapp.com/facts?animal_type=cat",
+  "https://cat-fact.herokuapp.com/facts/random?animal_type=cat",
   myInit
 );
 
 fetch(myRequest, myInit)
   .then((response) => response.json())
   .then((response) => {
+    catText = response && response[0] && response[0].text;
     console.log(response);
   })
   .catch((error) => {
+    catText = "Oups, I bugged, maybe"
     console.log(
       "Il y a eu un problème avec l'opération fetch: " + error.message
     );
   });
+
+WA.onEnterZone("catZone", () => {
+  catPopup = WA.openPopup("catPopup", catText, []);
+});
+
+WA.onLeaveZone("catZone", () => {
+  catPopup.close();
+});
+
+if (window.localStorage) {
+  let user = localStorage.getItem('User');
+  console.log("user", user);
+}
