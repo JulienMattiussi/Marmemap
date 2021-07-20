@@ -1,4 +1,4 @@
-const version = "0.7.21";
+const version = "0.7.22";
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -190,7 +190,7 @@ WA.onLeaveZone("successBoardZone", () => {
 });
 
 //CAT ZONE
-/*let myHeaders = new Headers();
+let myHeaders = new Headers();
 //myHeaders.append("Content-Type", "application/json");
 
 let myInit = {
@@ -225,16 +225,6 @@ WA.onEnterZone("catZone", () => {
 
 WA.onLeaveZone("catZone", () => {
   catPopup.close();
-    console.log("window.top");
-    console.log(window.top);
-    console.log("window.top.localStorage");
-    console.log(window.top.localStorage);
-    if (window.top && window.top.localStorage) {
-      console.log("u2");
-      user = window.top.localStorage.getItem('User');
-      console.log("u2 user");
-      console.log(user);
-    }
-});*/
+});
 
 
