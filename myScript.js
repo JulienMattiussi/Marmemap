@@ -1,4 +1,4 @@
-const version = "0.8.3";
+const version = "0.8.4";
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
@@ -8,7 +8,13 @@ console.log(`WA player API:`, WA.player);
 console.log(`WA nav API:`, WA.nav);
 console.log(`WA controls API:`, WA.controls);
 console.log(`Test player :`, WA.player.getCurrentUser());
-
+WA.player.getCurrentUser()
+.then((item) => {
+  console.log(`Test player promise :`, item);
+})
+.catch((error) => {
+  console.log(`Test player error :`, error);
+});
 const successBoard = {
   wcPicture: { description: "Les photos des anciens dans les WC" },
   superGenial: { description: "La vidéo du film légo dans la salle debian" },
