@@ -1,13 +1,13 @@
-const version = "0.8.2";
+const version = "0.8.3";
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
-console.log(`WA room API: ${WA.room && Object.keys(WA.room)}`);
-console.log(`WA ui API: ${WA.ui && Object.keys(WA.ui)}`);
-console.log(`WA player API: ${WA.player && Object.keys(WA.player)}`);
-console.log(`WA nav API: ${WA.nav && Object.keys(WA.nav)}`);
-console.log(`WA controls API: ${WA.controls && Object.keys(WA.controls)}`);
-console.log(`Test player API:`, WA.player);
+console.log(`WA room API:`, WA.room);
+console.log(`WA ui API:`, WA.ui);
+console.log(`WA player API:`, WA.player);
+console.log(`WA nav API:`, WA.nav);
+console.log(`WA controls API:`, WA.controls);
+console.log(`Test player :`, WA.player.getCurrentUser());
 
 const successBoard = {
   wcPicture: { description: "Les photos des anciens dans les WC" },
