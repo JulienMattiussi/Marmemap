@@ -1,7 +1,12 @@
-const version = "0.7.22";
+const version = "0.8.1";
 
 console.log(`MarmeMap version : ${version}`);
 console.log(`WA API: ${Object.keys(WA)}`);
+console.log(`WA room API: ${WA.room && Object.keys(WA.room)}`);
+console.log(`WA ui API: ${WA.ui && Object.keys(WA.ui)}`);
+console.log(`WA player API: ${WA.player && Object.keys(WA.player)}`);
+console.log(`WA nav API: ${WA.nav && Object.keys(WA.nav)}`);
+console.log(`WA controls API: ${WA.controls && Object.keys(WA.controls)}`);
 
 const successBoard = {
   wcPicture: { description: "Les photos des anciens dans les WC" },
@@ -53,7 +58,7 @@ const getToDoList = () => {
 };
 
 //TOILETS ZONE
-const toiletsSound = WA.loadSound("assets/flush.mp3");
+const toiletsSound = WA.sound.loadSound("assets/flush.mp3");
 const toiletsSoundConfig = {
   volume: 0.1,
   loop: false,
@@ -64,32 +69,32 @@ const toiletsSoundConfig = {
   mute: false,
 };
 
-WA.onLeaveZone("toiletsZone", () => {
+WA.room.onLeaveZone("toiletsZone", () => {
   toiletsSound.play(toiletsSoundConfig);
 });
 
 //WC PICTURE ZONE
-WA.onEnterZone("wcPictureZone", () => {
+WA.room.onEnterZone("wcPictureZone", () => {
   validateSuccess("wcPicture");
 });
 
 //WC BABYSHARK ZONE
-WA.onEnterZone("babySharkZone", () => {
+WA.room.onEnterZone("babySharkZone", () => {
   validateSuccess("babyShark");
 });
 
 //WC SUPERGENIAL ZONE
-WA.onEnterZone("superGenialZone", () => {
+WA.room.onEnterZone("superGenialZone", () => {
   validateSuccess("superGenial");
 });
 
 //WC AXE ZONE
-WA.onEnterZone("axeZone", () => {
+WA.room.onEnterZone("axeZone", () => {
   validateSuccess("axe");
 });
 
 //WC PHILIPPE ZONE
-const philippeSound = WA.loadSound("assets/philippe.mp3");
+const philippeSound = WA.sound.loadSound("assets/philippe.mp3");
 const philippeSoundConfig = {
   volume: 0.3,
   loop: false,
@@ -100,12 +105,12 @@ const philippeSoundConfig = {
   mute: false,
 };
 
-WA.onEnterZone("philippeZone", () => {
+WA.room.onEnterZone("philippeZone", () => {
   philippeTimer = Date.now();
   philippeSound.play(philippeSoundConfig);
 });
 
-WA.onLeaveZone("philippeZone", () => {
+WA.room.onLeaveZone("philippeZone", () => {
   philippeSound.stop();
   if (Date.now() > philippeTimer + philippeDelay * 1000) {
     validateSuccess("philippe");
@@ -113,7 +118,7 @@ WA.onLeaveZone("philippeZone", () => {
 });
 
 //NEIGHBOUR ZONE
-WA.onEnterZone("intolerableZone", () => {
+WA.room.onEnterZone("intolerableZone", () => {
   let intolerableText;
   switch (intolerableCount) {
     case 0:
@@ -126,20 +131,19 @@ WA.onEnterZone("intolerableZone", () => {
       intolerableText = "Ca devient intolérable !!";
       validateSuccess("intolerable");
   }
-  neighbourPopup = WA.openPopup("intolerablePopup", intolerableText, []);
+  neighbourPopup = WA.ui.openPopup("intolerablePopup", intolerableText, []);
 });
 
-WA.onLeaveZone("intolerableZone", () => {
+WA.room.onLeaveZone("intolerableZone", () => {
   neighbourPopup.close();
   intolerableCount++;
 });
 
 //SUCCESS BOARD
-WA.onEnterZone("successBoardZone", () => {
+WA.room.onEnterZone("successBoardZone", () => {
   const successCount = getSuccessCount();
   const validSuccessCount = getValidSuccessCount();
-  //WA.displayBubble();
-  sucessPopup = WA.openPopup(
+  sucessPopup = WA.ui.openPopup(
     "successBoardPopup",
     `SUCCESS BOARD
 
@@ -152,7 +156,7 @@ WA.onEnterZone("successBoardZone", () => {
         className: "primary",
         callback: (popup) => {
           popup.close();
-          sucessPopup = WA.openPopup(
+          sucessPopup = WA.ui.openPopup(
             "successBoardPopup",
             `SUCCESS BOARD
 
@@ -184,8 +188,7 @@ WA.onEnterZone("successBoardZone", () => {
   }, 5000);
 });
 
-WA.onLeaveZone("successBoardZone", () => {
-  //WA.removeBubble();
+WA.room.onLeaveZone("successBoardZone", () => {
   sucessPopup.close();
 });
 
@@ -218,12 +221,12 @@ fetch(myRequest, myInit)
     );
   });
 
-WA.onEnterZone("catZone", () => {
-  catPopup = WA.openPopup("catPopup", catText, []);
+WA.room.onEnterZone("catZone", () => {
+  catPopup = WA.ui.openPopup("catPopup", catText, []);
 
 });
 
-WA.onLeaveZone("catZone", () => {
+WA.room.onLeaveZone("catZone", () => {
   catPopup.close();
 });
 
